@@ -29,11 +29,20 @@ This project provides the Chrome Extension version of the **Deep Think** service
 
 1. Navigate to any article or webpage.
 2. Click the **Deep Think floating button** at the top-right corner of the page.
+
+![image](https://github.com/user-attachments/assets/47e76eb0-e62a-4ba5-ae12-9e5fc7e5d5df)
+
 3. The AI will:
 
    - Display a **summary and author intent** analysis at the top.
    - Highlight all sentences as clear or ambiguous.
    - Show explanation tooltips when you click on a sentence.
+
+![image](https://github.com/user-attachments/assets/ff0e026f-8d1e-4bcd-9a9f-8bd3bcba9676)
+
+![image](https://github.com/user-attachments/assets/e499d015-ca00-4acc-8df7-7252f2da67f2)
+
+
 
 ---
 
@@ -41,7 +50,13 @@ This project provides the Chrome Extension version of the **Deep Think** service
 
 1. Click the **Deep Think icon** in the Chrome toolbar.
 2. A popup will appear with an option to open the current page inside the Deep Think web app.
+
+![image](https://github.com/user-attachments/assets/29f77012-33d2-44b9-9fd3-105b10416ecd)
+
 3. This launches a full-page version of the analysis with enhanced UI and controls.
+
+![image](https://github.com/user-attachments/assets/014ada03-c5b7-4237-926e-a5e3a02bcb87)
+
 
 ---
 
