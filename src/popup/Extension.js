@@ -6,7 +6,7 @@ function Extension() {
   const goToService = () => {
     chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
       const url = encodeURIComponent(tabs[0].url);
-      window.open(`https://<your-server-url>/?auto_url=${url}`, '_blank');
+      window.open(`https://<your-client-url>/?auto_url=${url}`, '_blank');
     });
   };
 
