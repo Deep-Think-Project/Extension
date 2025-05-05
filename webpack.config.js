@@ -11,7 +11,9 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name].js",
-    clean: true
+    clean: true,
+    publicPath: '/',
+    assetModuleFilename: 'assets/[name].[hash][ext][query]'
   },
   module: {
     rules: [
@@ -23,7 +25,11 @@ module.exports = {
       {
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
-      }
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        type: 'asset/resource',
+      },
     ]
   },
   plugins: [
@@ -35,7 +41,8 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         { from: "src/manifest.json", to: "." },
-        { from: "icons", to: "icons" }
+        { from: "icons", to: "icons" }, 
+        { from: "src/assets/icon.png", to: "assets/icon.png" }
       ]
     })
   ],

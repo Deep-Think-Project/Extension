@@ -50,7 +50,7 @@
   
   .deepthink-ext-btn:hover,
   .deepthink-ext-btn:focus {
-    background: linear-gradient(90deg, #0056b3 60%, #236cff 100%);
+    background: linear-gradient(to right, #82218c, #0603b2);
     transform: translateY(-2px) scale(1.03);
     outline: none;
   }
