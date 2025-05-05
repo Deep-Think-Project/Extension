@@ -75,8 +75,8 @@ To run this extension locally for development:
 3. Open **chrome://extensions/** in Chrome.
 4. Enable **Developer Mode** (top right).
 5. Click **“Load unpacked”** and select the `dist/` directory.
-   **Important Configuration:**
 
+**Important Configuration:**
 - In `content.js`, update the `onclick` function to point to your **server address**.
 - In `extension.js`, update the `extension` function to point to your **client address**.
 
