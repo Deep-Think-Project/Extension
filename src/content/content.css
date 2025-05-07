@@ -1,170 +1,147 @@
-/* content.css */
-
 /* 버튼 스타일 */
 #deepthink-button {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 9999;
-    padding: 6px;
-    background-color: #fff;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  }
-  
-  #deepthink-button img {
-    width: 20px;
-    height: 20px;
-    display: block; /* 이미지 자체 마진/패딩 제거 및 정렬 용이 */
-  }
-  
-  /* DeepThink 분석 결과 컨테이너 */
-  #deepthink-summary-container {
-    background: linear-gradient(#f2f6ff, #f2f6ff) padding-box,
-                linear-gradient(to right, #82218c, #0603b2) border-box;
-    border: 1.5px solid transparent;
-    border-radius: 10px;
-    margin-bottom: 18px;
-    padding: 18px 22px;
-    box-shadow: 0 3px 14px rgba(98,112,187,.11);
-    font-family: inherit;
-    color: #1d2542;
-  }
-  
-  /* DeepThink 분석 결과 제목 */
-  .deepthink-title {
-    display: inline-block;
-    font-size: 1.16rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    color: transparent;
-    background: linear-gradient(to right, #82218c,#0603b2);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  /* 요약 및 작성자 의도 섹션 레이블 */
-  .deepthink-section-label {
-    font-weight: 600;
-  }
-  
-  /* 요약 및 작성자 의도 리스트 공통 스타일 */
-  .deepthink-list {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin: 7px 0 0 0;
-  }
-  
-  /* 요약 리스트 아이템 */
-  .deepthink-summary-list {
-    font-size: 1.01rem;
-  }
-  .deepthink-summary-list li {
-    margin-bottom: 3px;
-  }
-  
-  /* 작성자 의도 리스트 아이템 */
-  .deepthink-author-intent-list {
-    font-size: 1rem;
-  }
-  .deepthink-author-intent-list li {
-    margin-bottom: 3px;
-  }
-  
-  /* 하이라이트 스타일 */
-  .deepthink-hl {
-    padding: 2px 4px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: box-shadow 0.15s;
-  }
-  
-  .deepthink-clear_sentence {
-    background: #a7f49b;
-  }
-  
-  .deepthink-ambiguous_sentence {
-    background: #ddb2ff;
-  }
-  
-  .deepthink-hl:active,
-  .deepthink-hl.selected { 
-    box-shadow: 0 0 0 2px #2a4de466;
-  }
-  
-  /* 정보 상자 스타일 */
-  .deepthink-infobox {
-    display: inline-block; 
-    margin-left: 12px;
-    background: linear-gradient(#f9fcff, #f9fcff) padding-box,
-                linear-gradient(to right, #82218c, #0603b2) border-box;
-    border: 1.5px solid transparent;
-    border-radius: 8px;
-    box-shadow: 0 4px 14px rgba(75,127,220,0.11);
-    padding: 13px 16px 11px 14px;
-    color: #1c2642;
-    font-size: 0.99rem;
-    min-width: 220px;
-    max-width: 360px;
-    vertical-align: middle;
-    z-index: 99999;
-    position: relative; 
-  }
-  
-  .deepthink-infobox .infobox-label {
-    font-weight: 700;
-    margin-right: 3px;
-    color: transparent;
-    background: linear-gradient(to right, #82218c, #0603b2);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  .deepthink-infobox .deepthink-other-interpret {
-    margin-top: 4px;
-    color: #245184;
-  }
-  
-  .deepthink-infobox .deepthink-other-interpret-list {
-    list-style-type: disc;
-    margin: 3px 0 0 0;
-    padding-left: 18px;
-  }
-  
-  .deepthink-infobox .deepthink-ref-section {
-    margin-top: 4px;
-  }
-  
-  .deepthink-infobox .ref-list {
-    list-style-type: none;
-    padding-left: 18px; /* 기존 18px에서 수정 또는 유지 */
-    margin-top: 7px;   /* 기존 4px에서 수정 또는 유지 */
-    margin-bottom: 0;
-    font-size: 0.95rem;
-  }
-  
-  .deepthink-infobox .ref-list li {
-    margin-bottom: 2px;
-    color: #425ba3; 
-    word-break: break-all;
-  }
-  
-  .deepthink-infobox .ref-list a {
-    text-decoration: underline;
-    color: #2354ba;
-    display: inline-flex;
-    align-items: center;
-  }
-  .deepthink-infobox .ref-list a .ref-link-icon {
-    font-size: 1rem;
-    margin-right: 4px;
-  }
-  
-  .deepthink-infobox-no-info {
-    color: #aaa;
-  }
-  
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  padding: 6px;
+  background-color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+#deepthink-button img {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+/* DeepThink 분석 결과 컨테이너 */
+#deepthink-analysis-container {
+  background: linear-gradient(#f2f6ff, #f2f6ff) padding-box,
+    linear-gradient(to right, #82218c, #0603b2) border-box;
+  border: 1.5px solid transparent;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  padding: 18px 22px;
+  box-shadow: 0 3px 14px rgba(98, 112, 187, 0.11);
+  font-family: inherit;
+  color: #1d2542;
+}
+/* DeepThink 분석 결과 제목 */
+.deepthink-title {
+  display: inline-block;
+  font-size: 1.16rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: transparent;
+  background: linear-gradient(to right, #82218c, #0603b2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/* 요약 및 작성자 의도 섹션 레이블 */
+.deepthink-section-label {
+  font-weight: 600;
+}
+/* 요약 및 작성자 의도 리스트 공통 스타일 */
+.deepthink-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 7px 0 0 0;
+}
+/* 요약 리스트 아이템 */
+.deepthink-summary-list {
+  font-size: 1.01rem;
+}
+.deepthink-summary-list li {
+  margin-bottom: 3px;
+}
+/* 작성자 의도 리스트 아이템 */
+.deepthink-author-intent-list {
+  font-size: 1rem;
+}
+.deepthink-author-intent-list li {
+  margin-bottom: 3px;
+}
+/* 하이라이트 스타일 */
+.deepthink-hl {
+  padding: 2px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: box-shadow 0.15s;
+}
+.deepthink-clear_sentence {
+  background: #a7f49b;
+}
+.deepthink-ambiguous_sentence {
+  background: #ddb2ff;
+}
+.deepthink-hl:active,
+.deepthink-hl.selected {
+  box-shadow: 0 0 0 2px #2a4de466;
+}
+/* 정보 상자 스타일 */
+.deepthink-infobox {
+  display: inline-block;
+  margin-left: 12px;
+  background: linear-gradient(#f9fcff, #f9fcff) padding-box,
+    linear-gradient(to right, #82218c, #0603b2) border-box;
+  border: 1.5px solid transparent;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(75, 127, 220, 0.11);
+  padding: 13px 16px 11px 14px;
+  color: #1c2642;
+  font-size: 0.99rem;
+  min-width: 220px;
+  max-width: 360px;
+  vertical-align: middle;
+  z-index: 99999;
+  position: relative;
+}
+.deepthink-infobox .infobox-label {
+  font-weight: 700;
+  margin-right: 3px;
+  color: transparent;
+  background: linear-gradient(to right, #82218c, #0603b2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.deepthink-infobox .other-interpret-section {
+  margin-top: 4px;
+  color: #245184;
+}
+.deepthink-infobox .other-interpret-list {
+  list-style-type: disc;
+  margin: 3px 0 0 0;
+  padding-left: 18px;
+}
+.deepthink-infobox .ref-section {
+  margin-top: 4px;
+}
+.deepthink-infobox .ref-list {
+  list-style-type: none;
+  padding-left: 18px;
+  margin-top: 7px;
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+.deepthink-infobox .ref-list li {
+  margin-bottom: 2px;
+  color: #425ba3;
+  word-break: break-all;
+}
+.deepthink-infobox .ref-list a {
+  text-decoration: underline;
+  color: #2354ba;
+  display: inline-flex;
+  align-items: center;
+}
+.deepthink-infobox .ref-list a .ref-link-icon {
+  font-size: 1rem;
+  margin-right: 4px;
+}
+.deepthink-infobox-no-info {
+  color: #aaa;
+}
