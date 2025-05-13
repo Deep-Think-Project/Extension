@@ -1,4 +1,5 @@
-// content.js
+import "./content.css";
+
 (function () {
   // 1. 버튼 중복 생성 방지
   if (document.getElementById("deepthink-button")) return;
@@ -18,11 +19,14 @@
     }
 
     try {
-      const response = await fetch("https://<your-server-url>", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ html: articleEl.outerHTML, url: location.href }),
-      });
+      const response = await fetch(
+        "http://127.0.0.1:8000/extension_app/naver_news/",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ html: articleEl.outerHTML }),
+        }
+      );
 
       if (!response.ok) throw new Error("서버 에러");
 
@@ -35,7 +39,6 @@
       }
       */
       const data = await response.json();
-
       // 3. 요약/의도 컨테이너 중복 생성 방지
       const prevSummary = document.getElementById(
         "deepthink-analysis-container"
@@ -71,7 +74,7 @@
       articleEl.parentNode.insertBefore(infoDiv, articleEl);
 
       // 5. article 태그를 서버에서 돌려받은 HTML로 교체
-      articleEl.outerHTML = newArticleEl;
+      articleEl.outerHTML = data.article_html;
 
       const newArticleEl = document.querySelector("article");
 
@@ -80,7 +83,20 @@
         newArticleEl.addEventListener("click", function (e) {
           const target = e.target.closest(".deepthink-hl");
           if (target) {
+            // 이미 선택된 요소를 다시 클릭한 경우에도 인포박스 유지
+            // 다른 하이라이트 클릭 시에만 이전 인포박스 제거하고 새 인포박스 표시
+            const currentSelected = document.querySelector(
+              ".deepthink-hl.selected"
+            );
+
+            // 다른 하이라이트를 클릭한 경우에만 hideAllInfoBoxes 호출
+            if (currentSelected && currentSelected !== target) {
+              hideAllInfoBoxes();
+            }
+
             showSentenceInfoBox(target);
+
+            e.stopPropagation();
           }
         });
       }
@@ -102,8 +118,8 @@
 
     const rect = span.getBoundingClientRect();
     box.style.position = "fixed";
-    box.style.left = `${rect.right + window.scrollX + 12}px`;
-    box.style.top = `${rect.top + window.scrollY - 4}px`;
+    box.style.left = `${rect.right + 12}px`;
+    box.style.top = `${rect.top - 4}px`;
 
     let html = "";
     if (span.dataset.reason) {
@@ -113,14 +129,14 @@
                   <span>${span.dataset.reason}</span>
               </div>`;
     }
-    if (span.dataset.otherInterp) {
-      const arr = span.dataset.otherInterp.split("||").filter(Boolean);
+    if (span.dataset.other_interp) {
+      const arr = span.dataset.other_interp.split("||").filter(Boolean);
       if (arr.length) {
         html += `
                   <div class="other-interpret-section">
                       <span class="infobox-label">다른 해석:</span>
                       <ul class="other-interpret-list">
-                          ${arr.map((str) => `<li>${str}</li>`.join(""))}
+                          ${arr.map((str) => `<li>${str}</li>`).join("")}
                       </ul>
                   </div>
               `;
@@ -153,6 +169,7 @@
     }
     box.innerHTML =
       html || '<span class="deepthink-infobox-no-info">추가 정보 없음</span>';
+
     document.body.appendChild(box);
 
     // 외부 클릭 시 infobox 닫기
@@ -170,7 +187,10 @@
   }
 
   function handleOutsideClickForInfoBox(event) {
-    if (!event.target.closest(".deepthink-infobox")) {
+    if (
+      !event.target.closest(".deepthink-infobox") &&
+      !event.target.closest(".deepthink-hl")
+    ) {
       hideAllInfoBoxes();
     } else {
       setTimeout(() => {
